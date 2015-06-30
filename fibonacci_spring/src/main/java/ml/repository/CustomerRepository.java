@@ -1,6 +1,7 @@
 package ml.repository;
 
 public interface CustomerRepository {
-	public abstract void setFibonacciElementIndex(int index);
-	public abstract int getFibonacciElementIndex();
+	public abstract boolean saveFibonacciElementIndex(int index);
+	public abstract void saveFibonacciElementVal(int index);
+	public abstract int findFibonacciElementVal(int index);
 }

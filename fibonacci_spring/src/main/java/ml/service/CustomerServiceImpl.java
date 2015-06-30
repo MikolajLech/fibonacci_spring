@@ -10,24 +10,19 @@ public class CustomerServiceImpl implements CustomerService {
 
 	private CustomerRepository customerRepository;
 	
-	public CustomerServiceImpl() {
-	}
-
-	public CustomerServiceImpl(CustomerRepository customerRepository) {
-		this.customerRepository = customerRepository;
-	}
-
 	@Autowired 
 	public void setCustomerRepository(CustomerRepository customerRepository) {
 		this.customerRepository = customerRepository;
 	}
 
-	public int getFibonacciElementVal() {
-		return fibonacci(customerRepository.getFibonacciElementIndex());
+	public int findFibonacciElementVal(int index) {
+		return customerRepository.findFibonacciElementVal(index);
 	}
 	
-	public void setFibonacciElementIndex(int index) {
-		customerRepository.setFibonacciElementIndex(index);
+	public void saveFibonacciElementIndex(int index) {
+		if(customerRepository.saveFibonacciElementIndex(index)) {
+			customerRepository.saveFibonacciElementVal(fibonacci(index));			
+		}
 	}
 	
 	private int fibonacci(int index) {

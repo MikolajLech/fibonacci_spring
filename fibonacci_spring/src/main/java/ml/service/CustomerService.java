@@ -1,6 +1,6 @@
 package ml.service;
 
 public interface CustomerService {
-	int getFibonacciElementVal();
-	void setFibonacciElementIndex(int index);
+	int findFibonacciElementVal(int index);
+	void saveFibonacciElementIndex(int index);
 }

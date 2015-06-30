@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 public class CustomerViewerImpl implements  CustomerViewer {
 	
 	CustomerService customerService;
+	private int lastChoice;
 	
 	@Autowired 
 	public void setCustomerService(CustomerService customerService) {
@@ -20,12 +21,13 @@ public class CustomerViewerImpl implements  CustomerViewer {
 	public void setData() {
 		System.out.print("Enter fibonacci element number for evaluation: ");
 		Scanner input = new Scanner(System.in);
-		customerService.setFibonacciElementIndex(input.nextInt());
+		lastChoice = input.nextInt();
+		customerService.saveFibonacciElementIndex(lastChoice);
 //		input.close(); // closing scanner closes Sytem.in stream
 		//TODO Extend BufferedInputStream and override close() so that closing scanner doesn't close in stream.
 	}
 
 	public void prtData() {
-		System.out.println(customerService.getFibonacciElementVal());
+		System.out.println(customerService.findFibonacciElementVal(lastChoice));
 	}
 }
